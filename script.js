@@ -1,7 +1,7 @@
 console.log("Welcome to Spotify");
 
 let songIndex = 0;
-let audioElement = new Audio('songs/Song-1.mp3');
+let audioElement = new Audio('songs/song-1.mp3');
 
 let masterPlay = document.getElementById('masterPlay');
 let myProgressBar = document.getElementById('myProgressBar');
@@ -10,7 +10,7 @@ let masterSongName = document.getElementById('masterSongName');
 let songItems = Array.from(document.getElementsByClassName('songItem'));
 
 let songs = [
-    {songName: "Let Me Love You - Justin Bieber, DJ Snake", filePath:"songs/Song-1.mp3", coverPath: "covers/cover-1.jpg" },
+    {songName: "Let Me Love You - Justin Bieber, DJ Snake", filePath:"songs/song-1.mp3", coverPath: "covers/cover-1.jpg" },
     {songName: "Memories - Maroon 5 ", filePath:"songs/song-2.mp3", coverPath: "covers/cover-2.jpg" },
     {songName: "I'll Be Waiting - Cian Ducrot", filePath:"songs/song-3.mp3", coverPath: "covers/cover-3.jpg" },
     {songName: "Attention - Charlie Puth", filePath:"songs/song-4.mp3", coverPath: "covers/cover-4.jpg" },
@@ -28,7 +28,6 @@ songItems.forEach((element,i) => {
     element.getElementsByClassName("songName")[0].innerText = songs[i].songName;
 
 })
-// audioElement.play();
 
 //Handle play/pause click
 masterPlay.addEventListener('click', ()=> {
@@ -74,7 +73,7 @@ Array.from(document.getElementsByClassName('songItemPlay')).forEach((element)=> 
         songIndex = parseInt(e.target.id)
         e.target.classList.remove('fa-circle-play');
         e.target.classList.add('fa-circle-pause');
-        audioElement.src = `songs/${songIndex+1}.mp3`;
+        audioElement.src = `songs/song-${songIndex+1}.mp3`;
 
         masterSongName.innerText = songs[songIndex].songName;
         audioElement.currentTime = 0;
@@ -93,12 +92,13 @@ document.getElementById('previous').addEventListener('click', () => {
     else{
     songIndex -= 1;
     }
-    audioElement.src = `songs/${songIndex+1}.mp3`;
+    audioElement.src = `songs/song-${songIndex+1}.mp3`;
     masterSongName.innerText = songs[songIndex].songName;
-        audioElement.currentTime = 0;
-        audioElement.play();
-        masterPlay.classList.remove('fa-circle-play');
-        masterPlay.classList.add('fa-circle-pause');
+    audioElement.currentTime = 0;
+    audioElement.play();
+    gif.style.opacity=1;
+    masterPlay.classList.remove('fa-circle-play');
+    masterPlay.classList.add('fa-circle-pause');
 })
 
 document.getElementById('next').addEventListener('click', () => {
@@ -108,10 +108,11 @@ document.getElementById('next').addEventListener('click', () => {
     else{
     songIndex += 1;
     }
-    audioElement.src = `songs/${songIndex+1}.mp3`;
+    audioElement.src = `songs/song-${songIndex+1}.mp3`;
     masterSongName.innerText = songs[songIndex].songName;
-        audioElement.play();
-        masterPlay.classList.remove('fa-circle-play');
-        masterPlay.classList.add('fa-circle-pause');
+    audioElement.play();
+    gif.style.opacity=1;
+    masterPlay.classList.remove('fa-circle-play');
+    masterPlay.classList.add('fa-circle-pause');
 })
 
